@@ -63,9 +63,17 @@ $ curl https://localhost --insecure
 
 ```
 $ docker-compose ps
-          Name                        Command              State                    Ports
------------------------------------------------------------------------------------------------------------
-dockernginxlaravel_web_1   nginx -g daemon off;            Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+      Name                Command          State                    Ports
+-------------------------------------------------------------------------------------------
+dockernginx_web_1   nginx -g daemon off;   Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+```
+
+* ログ確認
+
+```
+$ docker-compose logs -f
+Attaching to dockernginx_web_1
+web_1  | 172.20.0.1 - - [23/Jun/2019:00:12:05 +0900] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36" "-"
 ```
 
 * プロセス停止
