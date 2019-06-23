@@ -11,3 +11,15 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - "./log/nginx:/var/log/nginx"
+    depends_on:
+      - php
+    restart: unless-stopped
+  php:
+    build:
+      context: .
+      dockerfile: ./containers/php/Dockerfile
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./log/php/codeigniter:/var/www/html/php/application/logs"
+    restart: unless-stopped

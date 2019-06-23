@@ -30,21 +30,30 @@ $ tree
 .
 ├── README.md
 ├── app                         # Webアプリケーションの保存場所
-│   └── index.html
+│   ├── php
+│   │   └── public
+│   │       └── index.php
+│   └── web
+│       └── index.html
 ├── assets                      # 資材
-│   └── nginx
-│       ├── conf.d              ## Nginxのコンフィグ
-│       │   └── default.conf
-│       ├── nginx.conf          ## Nginxのベースコンフィグ
-│       └── ssl                 ## SSL証明書ディレクトリ（※本リポジトリでは自己証明書を利用）
-│           ├── server.crt
-│           └── server.key
+│   ├── nginx
+│   │   ├── conf.d              ## Nginxのコンフィグ
+│   │   │   └── default.conf
+│   │   ├── nginx.conf          ## Nginxのベースコンフィグ
+│   │   └── ssl                 ## SSL証明書ディレクトリ（※本リポジトリでは自己証明書を利用）
+│   │       ├── server.crt
+│   │       └── server.key
+│   └── php
 ├── containers                  # Dockerコンテナ設定
-│   └── nginx
-│       └── Dockerfile
+│   ├── nginx
+│   │   └── Dockerfile
+│   └── php
+│       └── Dockerfile
 ├── docker-compose.yml
 └── log                         # logフォルダ
-    └── nginx
+    ├── nginx                   ## Nginx logフォルダ
+    └── php                     ## PHP logフォルダ
+        └── codeigniter         ### CodeIgniter logフォルダ
 ```
 
 ## 実行コマンド
@@ -65,9 +74,10 @@ $ curl https://localhost --insecure
 
 ```
 $ docker-compose ps
-      Name                Command          State                    Ports
--------------------------------------------------------------------------------------------
-dockernginx_web_1   nginx -g daemon off;   Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+      Name                     Command              State                    Ports
+----------------------------------------------------------------------------------------------------
+dockernginx_php_1   docker-php-entrypoint php-fpm   Up      9000/tcp
+dockernginx_web_1   nginx -g daemon off;            Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
 ```
 
 * ログ確認
@@ -82,3 +92,18 @@ $ tail -f log/nginx/access.log
 ```
 $ docker-compose down
 ```
+
+## コンテナ環境
+
+* dockernginx_web
+
+| ミドルウェア | バージョン | 備考 |
+| :---- | :---- | :---- |
+| Nginx | latest | Webサーバ |
+
+* dockernginx_php
+
+| ミドルウェア | バージョン | 備考 |
+| :---- | :---- | :---- |
+| PHP | 7.X | PHP |
+| Composer | 1.8.6 | PHPインストーラ |

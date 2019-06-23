@@ -1,4 +1,9 @@
-app/*
-!app/index.html
+app/web/*
+!app/web/index.html
+app/php/*
+app/php/public/*
+!app/php/public/index.php
 log/nginx/*
 !log/nginx/.gitkeep
+log/php/codeigniter/*
+!log/php/codeigniter/.gitkeep
