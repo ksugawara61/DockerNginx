@@ -65,9 +65,10 @@ $ curl https://localhost --insecure
 
 ```
 $ docker-compose ps
-      Name                Command          State                    Ports
--------------------------------------------------------------------------------------------
-dockernginx_web_1   nginx -g daemon off;   Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+      Name                     Command              State                    Ports
+----------------------------------------------------------------------------------------------------
+dockernginx_php_1   docker-php-entrypoint php-fpm   Up      9000/tcp
+dockernginx_web_1   nginx -g daemon off;            Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
 ```
 
 * ログ確認
@@ -82,3 +83,18 @@ $ tail -f log/nginx/access.log
 ```
 $ docker-compose down
 ```
+
+## コンテナ環境
+
+* dockernginx_web
+
+| ミドルウェア | バージョン | 備考 |
+| :---- | :---- | :---- |
+| Nginx | latest | Webサーバ |
+
+* dockernginx_php
+
+| ミドルウェア | バージョン | 備考 |
+| :---- | :---- | :---- |
+| PHP | 7.X | PHP |
+| Composer | 1.8.6 | PHPインストーラ |

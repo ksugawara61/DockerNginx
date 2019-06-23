@@ -20,4 +20,6 @@ services:
       dockerfile: ./containers/php/Dockerfile
     environment:
       TZ: "Asia/Tokyo"
+    volumes:
+      - "./log/php/codeigniter:/var/www/html/php/application/logs"
     restart: unless-stopped
