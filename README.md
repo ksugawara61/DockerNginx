@@ -30,21 +30,30 @@ $ tree
 .
 ├── README.md
 ├── app                         # Webアプリケーションの保存場所
-│   └── index.html
+│   ├── php
+│   │   └── public
+│   │       └── index.php
+│   └── web
+│       └── index.html
 ├── assets                      # 資材
-│   └── nginx
-│       ├── conf.d              ## Nginxのコンフィグ
-│       │   └── default.conf
-│       ├── nginx.conf          ## Nginxのベースコンフィグ
-│       └── ssl                 ## SSL証明書ディレクトリ（※本リポジトリでは自己証明書を利用）
-│           ├── server.crt
-│           └── server.key
+│   ├── nginx
+│   │   ├── conf.d              ## Nginxのコンフィグ
+│   │   │   └── default.conf
+│   │   ├── nginx.conf          ## Nginxのベースコンフィグ
+│   │   └── ssl                 ## SSL証明書ディレクトリ（※本リポジトリでは自己証明書を利用）
+│   │       ├── server.crt
+│   │       └── server.key
+│   └── php
 ├── containers                  # Dockerコンテナ設定
-│   └── nginx
-│       └── Dockerfile
+│   ├── nginx
+│   │   └── Dockerfile
+│   └── php
+│       └── Dockerfile
 ├── docker-compose.yml
 └── log                         # logフォルダ
-    └── nginx
+    ├── nginx                   ## Nginx logフォルダ
+    └── php                     ## PHP logフォルダ
+        └── codeigniter         ### CodeIgniter logフォルダ
 ```
 
 ## 実行コマンド
