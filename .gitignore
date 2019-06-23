@@ -3,6 +3,9 @@ app/web/*
 app/php/*
 app/php/public/*
 !app/php/public/index.php
+app/ruby/*
+!app/ruby/.gitkeep
+
 log/nginx/*
 !log/nginx/.gitkeep
 log/php/codeigniter/*

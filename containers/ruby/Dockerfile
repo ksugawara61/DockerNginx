@@ -27,6 +27,7 @@ RUN source /etc/profile.d/rbenv.sh \
  && rbenv versions \
  && rbenv global 2.6.3 \
  && ruby -v \
- && rbenv rehash
+ && rbenv rehash \
+ && gem install bundler
 
 ENTRYPOINT tail -f /dev/null
