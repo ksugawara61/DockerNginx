@@ -30,4 +30,12 @@ RUN source /etc/profile.d/rbenv.sh \
  && rbenv rehash \
  && gem install bundler
 
-ENTRYPOINT tail -f /dev/null
+## Setup ruby app
+COPY ./app/ruby /var/www/html
+WORKDIR /var/www/html
+RUN source /etc/profile.d/rbenv.sh \
+ && bundle install --path vendor/bundle
+
+#ENTRYPOINT tail -f /dev/null
+ENTRYPOINT source /etc/profile.d/rbenv.sh \
+ && bundle exec rackup -o 0.0.0.0 -p 8080

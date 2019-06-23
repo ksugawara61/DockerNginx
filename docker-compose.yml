@@ -13,6 +13,7 @@ services:
       - "./log/nginx:/var/log/nginx"
     depends_on:
       - php
+      - ruby
     restart: unless-stopped
   php:
     build:
@@ -27,6 +28,8 @@ services:
     build:
       context: .
       dockerfile: ./containers/ruby/Dockerfile
+    ports:
+      - "8080:8080"
     environment:
       TZ: "Asia/Tokyo"
     restart: unless-stopped
