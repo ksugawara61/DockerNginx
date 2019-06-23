@@ -23,3 +23,10 @@ services:
     volumes:
       - "./log/php/codeigniter:/var/www/html/php/application/logs"
     restart: unless-stopped
+  ruby:
+    build:
+      context: .
+      dockerfile: ./containers/ruby/Dockerfile
+    environment:
+      TZ: "Asia/Tokyo"
+    restart: unless-stopped
