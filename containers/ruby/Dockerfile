@@ -32,10 +32,11 @@ RUN source /etc/profile.d/rbenv.sh \
 
 ## Setup ruby app
 COPY ./app/ruby /var/www/html
+COPY ./assets/ruby/unicorn.rb /var/www/html/unicorn.rb
+RUN mkdir /var/log/ruby
 WORKDIR /var/www/html
 RUN source /etc/profile.d/rbenv.sh \
  && bundle install --path vendor/bundle
 
-#ENTRYPOINT tail -f /dev/null
 ENTRYPOINT source /etc/profile.d/rbenv.sh \
- && bundle exec rackup -o 0.0.0.0 -p 8080
+ && RACK_ENV=production bundle exec unicorn -c /var/www/html/unicorn.rb
