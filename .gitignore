@@ -1,2 +1,4 @@
 app/*
 !app/index.html
+log/nginx/*
+!log/nginx/.gitkeep
