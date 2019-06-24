@@ -14,9 +14,11 @@ services:
       - "./log/nginx/web:/var/log/nginx/web"
       - "./log/nginx/php:/var/log/nginx/php"
       - "./log/nginx/ruby:/var/log/nginx/ruby"
+      - "./log/nginx/python:/var/log/nginx/python"
     depends_on:
       - php
       - ruby
+      - python
     restart: unless-stopped
   php:
     build:
@@ -35,4 +37,13 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - "./log/ruby:/var/log/ruby"
+    restart: unless-stopped
+  python:
+    build:
+      context: .
+      dockerfile: ./containers/python/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      TZ: "Asia/Tokyo"
     restart: unless-stopped
