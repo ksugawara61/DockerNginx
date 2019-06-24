@@ -10,7 +10,10 @@ services:
     environment:
       TZ: "Asia/Tokyo"
     volumes:
-      - "./log/nginx:/var/log/nginx"
+      - "./log/nginx/default:/var/log/nginx/default"
+      - "./log/nginx/web:/var/log/nginx/web"
+      - "./log/nginx/php:/var/log/nginx/php"
+      - "./log/nginx/ruby:/var/log/nginx/ruby"
     depends_on:
       - php
       - ruby

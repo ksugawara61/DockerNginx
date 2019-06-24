@@ -6,8 +6,14 @@ app/php/public/*
 app/ruby/*
 !app/ruby/.gitkeep
 
-log/nginx/*
-!log/nginx/.gitkeep
+log/nginx/default/*
+!log/nginx/default/.gitkeep
+log/nginx/web/*
+!log/nginx/web/.gitkeep
+log/nginx/php/*
+!log/nginx/php/.gitkeep
+log/nginx/ruby/*
+!log/nginx/ruby/.gitkeep
 log/php/codeigniter/*
 !log/php/codeigniter/.gitkeep
 log/ruby/*
