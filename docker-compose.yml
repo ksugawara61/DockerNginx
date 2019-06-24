@@ -10,9 +10,13 @@ services:
     environment:
       TZ: "Asia/Tokyo"
     volumes:
-      - "./log/nginx:/var/log/nginx"
+      - "./log/nginx/default:/var/log/nginx/default"
+      - "./log/nginx/web:/var/log/nginx/web"
+      - "./log/nginx/php:/var/log/nginx/php"
+      - "./log/nginx/ruby:/var/log/nginx/ruby"
     depends_on:
       - php
+      - ruby
     restart: unless-stopped
   php:
     build:
@@ -22,4 +26,13 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - "./log/php/codeigniter:/var/www/html/php/application/logs"
+    restart: unless-stopped
+  ruby:
+    build:
+      context: .
+      dockerfile: ./containers/ruby/Dockerfile
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./log/ruby:/var/log/ruby"
     restart: unless-stopped
