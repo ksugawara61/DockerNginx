@@ -14,9 +14,11 @@ services:
       - "./log/nginx/web:/var/log/nginx/web"
       - "./log/nginx/php:/var/log/nginx/php"
       - "./log/nginx/ruby:/var/log/nginx/ruby"
+      - "./log/nginx/python:/var/log/nginx/python"
     depends_on:
       - php
       - ruby
+      - python
     restart: unless-stopped
   php:
     build:

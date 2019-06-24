@@ -35,17 +35,12 @@ RUN source /etc/profile.d/pyenv.sh \
 
 ## Install Flack
 RUN source /etc/profile.d/pyenv.sh \
- && pip install FLask
+ && pip install Flask \
+ && pip install gunicorn
 
 ## Setup python app
 COPY ./app/python /var/www/html
 
-#ENTRYPOINT source /etc/profile.d/rbenv.sh \
-# && RACK_ENV=production bundle exec unicorn -c /var/www/html/unicorn.rb
-
 WORKDIR  /var/www/html
-ENV FLASK_DEBUG=1
-ENV FLASK_APP=hello.py
-#ENTRYPOINT tail -f /dev/null
 ENTRYPOINT source /etc/profile.d/pyenv.sh \
- && flask run
+ && gunicorn app:app -b 0.0.0.0:5000

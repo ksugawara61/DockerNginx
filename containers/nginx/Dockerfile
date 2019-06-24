@@ -10,9 +10,10 @@ COPY ./assets/nginx/conf.d/  /etc/nginx/conf.d/
 COPY ./app/web /var/www/html/web
 
 WORKDIR /var/log/nginx
-RUN mkdir default web php ruby
+RUN mkdir default web php ruby python
 
 VOLUME /var/log/nginx/default
 VOLUME /var/log/nginx/web
 VOLUME /var/log/nginx/php
 VOLUME /var/log/nginx/ruby
+VOLUME /var/log/nginx/python

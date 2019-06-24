@@ -5,6 +5,8 @@ app/php/public/*
 !app/php/public/index.php
 app/ruby/*
 !app/ruby/.gitkeep
+app/python/*
+!app/python/app.python
 
 log/nginx/default/*
 !log/nginx/default/.gitkeep
@@ -14,6 +16,8 @@ log/nginx/php/*
 !log/nginx/php/.gitkeep
 log/nginx/ruby/*
 !log/nginx/ruby/.gitkeep
+log/nginx/python/*
+!log/nginx/python/.gitkeep
 log/php/codeigniter/*
 !log/php/codeigniter/.gitkeep
 log/ruby/*
