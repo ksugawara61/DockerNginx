@@ -26,6 +26,7 @@ Dockerを活用したWebサーバ環境です。
 | 127.0.0.1 | web.docker.example.com | HTML |
 | 127.0.0.1 | php.docker.example.com | PHP (CodeIgniter3) |
 | 127.0.0.1 | ruby.docker.example.com | Ruby |
+| 127.0.0.1 | python.docker.example.com | Python |
 
 ### 実行手順
 
@@ -45,6 +46,8 @@ $ tree
 │   ├── php                     ## PHPアプリ
 │   │   └── public
 │   │       └── index.php
+│   ├── python                  ## Pythonアプリ
+│   │   └── app.py
 │   ├── ruby                    ## Rubyアプリ
 │   └── web                     ## HTMLアプリ
 │       └── index.html
@@ -55,6 +58,7 @@ $ tree
 │   │   │   │   └── ssl.conf
 │   │   │   ├── default.conf
 │   │   │   ├── php-app.conf
+│   │   │   ├── python-app.conf
 │   │   │   ├── ruby-app.conf
 │   │   │   └── web-app.conf
 │   │   ├── nginx.conf          ## Nginxのベースコンフィグ
@@ -67,6 +71,8 @@ $ tree
 │   │   └── Dockerfile
 │   ├── php
 │   │   └── Dockerfile
+│   ├── python
+│   │   └── Dockerfile
 │   └── ruby
 │       └── Dockerfile
 ├── docker-compose.yml
@@ -74,6 +80,7 @@ $ tree
     ├── nginx
     │   ├── default
     │   ├── php
+    │   ├── python
     │   ├── ruby
     │   └── web
     ├── php
@@ -102,9 +109,10 @@ Hello world!
 $ docker-compose ps
        Name                     Command               State                    Ports
 ------------------------------------------------------------------------------------------------------
-dockernginx_php_1    docker-php-entrypoint php-fpm    Up      9000/tcp
-dockernginx_ruby_1   /bin/sh -c source /etc/pro ...   Up
-dockernginx_web_1    nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+dockernginx_php_1     docker-php-entrypoint php-fpm    Up      9000/tcp
+ockernginx_python_1   /bin/sh -c source /etc/pro ...   Up      0.0.0.0:5000->5000/tcp
+dockernginx_ruby_1    /bin/sh -c source /etc/pro ...   Up
+dockernginx_web_1     nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
 ```
 
 * ログ確認
@@ -141,3 +149,10 @@ $ docker-compose down
 | :---- | :---- | :---- |
 | Ruby | 2.6.3p62 | rbenvでインストールしたRuby |
 | rbenv | 1.1.2-2-g4e92322 | rbenv |
+
+* dockernginx_python
+
+| ミドルウェア | バージョン | 備考 |
+| :---- | :---- | :---- |
+| Python | 3.7.3 | pyenvでインストールしたPython |
+| pyenv | 1.2.12-2-geb68ec9 | pyenv |
