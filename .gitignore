@@ -10,3 +10,5 @@ log/nginx/*
 !log/nginx/.gitkeep
 log/php/codeigniter/*
 !log/php/codeigniter/.gitkeep
+log/ruby/*
+!log/ruby/.gitkeep
