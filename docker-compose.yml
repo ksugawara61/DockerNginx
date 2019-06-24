@@ -31,8 +31,6 @@ services:
     build:
       context: .
       dockerfile: ./containers/ruby/Dockerfile
-    ports:
-      - "8080:8080"
     environment:
       TZ: "Asia/Tokyo"
     volumes:
