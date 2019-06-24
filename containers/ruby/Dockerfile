@@ -36,7 +36,7 @@ COPY ./assets/ruby/unicorn.rb /var/www/html/unicorn.rb
 RUN mkdir /var/log/ruby
 WORKDIR /var/www/html
 RUN source /etc/profile.d/rbenv.sh \
- && bundle install --path vendor/bundle
+ && if [ -f Gemfile ]; then bundle install --path vendor/bundle ; fi
 
 ENTRYPOINT source /etc/profile.d/rbenv.sh \
  && RACK_ENV=production bundle exec unicorn -c /var/www/html/unicorn.rb
